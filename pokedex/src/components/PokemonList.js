@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import Pokemon from './Pokemon';
 import { getPokemons } from "../providers/ApiPokemon";
@@ -6,13 +6,17 @@ import { getPokemons } from "../providers/ApiPokemon";
 const PokemonList = ({navigation}) => {
 
   const [pokemons, setPokemons] = useState([]);
-  const [pokemonNumber, setPokemonNumber] = useState(50);
+  const [pokemonNumber, setPokemonNumber] = useState(15);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    getPokemons(pokemonNumber).then(datas => {
-      setPokemons(datas)
-    })
-  }, [pokemonNumber], 1000)
+    if(load){
+      getPokemons(pokemonNumber).then(datas => {
+        setPokemons(datas)
+        setLoad(false)
+      })
+    }
+  }, [pokemonNumber])
 
   const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
     const paddingToBottom = 20;
@@ -20,17 +24,22 @@ const PokemonList = ({navigation}) => {
   }
 
   const addPokemons = () => {
-    setPokemonNumber(pokemonNumber + 50);
+    setLoad(true)
+    setPokemonNumber(pokemonNumber + 20);
   }
   
   return (
-    <FlatList
-      onScroll={({nativeEvent}) => isCloseToBottom(nativeEvent) ? addPokemons() : null}
-      data={pokemons.results}
-      renderItem={pokemon => <Pokemon navigation={navigation} pokemon={pokemon}></Pokemon>}
-      keyExtractor={pokemon => pokemon.name}
-      numColumns={3}
-    />
+    <>
+      <Image source={require('../../assets/loader.svg')} ></Image>
+      <FlatList
+        onScroll={({nativeEvent}) => isCloseToBottom(nativeEvent) ? addPokemons() : null}
+        data={pokemons.results}
+        renderItem={pokemon => <Pokemon navigation={navigation} pokemon={pokemon}></Pokemon>}
+        keyExtractor={pokemon => pokemon.name}
+        numColumns={3}
+      />
+      
+    </>
   );
 }
 

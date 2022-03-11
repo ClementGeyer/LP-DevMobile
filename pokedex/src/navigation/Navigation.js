@@ -32,7 +32,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-          <Tab.Screen name="Pokédex" component={Pokedex} />
+          <Tab.Screen name="Pokédex" component={Pokedex} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -10,6 +10,7 @@ export default function Pokemon(props) {
       images: {
         width: 100,
         height: 100,
+        margin: 'auto'
       },
       text: {
         textAlign: 'center'
@@ -25,6 +26,7 @@ export default function Pokemon(props) {
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.2,
         shadowRadius: 3,
+        justifyContent: 'center'
       },
       pokemon: {
         width: '10%',

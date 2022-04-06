@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PokemonList from "../components/PokemonList";
-import PokemonDetail from "../components/PokemonDetail";
+import PokemonList from "../components/Pokedex/PokemonList";
+import PokemonDetail from "../components/Pokedex/PokemonDetail";
+import SearchPokemons from "../components/SearchPokemons/SearchPokemons";
 
 import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer, TabActions } from '@react-navigation/native';
@@ -27,12 +28,25 @@ function Pokedex(){
     )
 }
 
+function Search(){
+    return(
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="SearchPokemons" 
+          component={SearchPokemons} 
+          options={{ title: 'Recherche de pokémons' }}
+          />
+      </Stack.Navigator>
+    )
+}
+
 export default function Navigation() {
 
   return (
     <NavigationContainer>
       <Tab.Navigator>
           <Tab.Screen name="Pokédex" component={Pokedex} options={{ headerShown: false }} />
+          <Tab.Screen name="Recherche" component={Search} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

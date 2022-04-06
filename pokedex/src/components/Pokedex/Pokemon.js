@@ -1,6 +1,6 @@
 import { Text, View, Image, StyleSheet, Pressable } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import { getPokemon } from '../providers/ApiPokemon';
+import { getPokemon } from '../../providers/ApiPokemon';
 
 export default function Pokemon(props) {
 

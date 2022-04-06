@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Image } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import Pokemon from './Pokemon';
-import { getPokemons } from "../providers/ApiPokemon";
+import { getPokemons } from "../../providers/ApiPokemon";
 
 const PokemonList = ({navigation}) => {
 

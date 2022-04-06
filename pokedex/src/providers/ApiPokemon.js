@@ -26,3 +26,14 @@ export async function getPokemon(url) {
     .then((response) => response.json())
     .catch((error) => console.log('error', error));
 }
+
+export async function getPokemonByName(name){
+    let new_url = new URL("https://pokeapi.co/api/v2/pokemon/" + name.toLowerCase())
+
+    return fetch(new_url, {
+        'method': 'GET'
+    })
+    .then((response) => response.json())
+    .catch((error) => console.log('error', error));
+    
+}

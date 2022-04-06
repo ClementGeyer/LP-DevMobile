@@ -6,7 +6,7 @@ import { getPokemons } from "../providers/ApiPokemon";
 const PokemonList = ({navigation}) => {
 
   const [pokemons, setPokemons] = useState([]);
-  const [pokemonNumber, setPokemonNumber] = useState(15);
+  const [pokemonNumber, setPokemonNumber] = useState(10);
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
@@ -25,12 +25,12 @@ const PokemonList = ({navigation}) => {
 
   const addPokemons = () => {
     setLoad(true)
-    setPokemonNumber(pokemonNumber + 20);
+    setPokemonNumber(pokemonNumber + 10);
   }
   
   return (
     <>
-      <Image source={require('../../assets/loader.svg')} ></Image>
+      {/*<Image source={require('../../assets/loader.svg')} ></Image>*/}
       <FlatList
         onScroll={({nativeEvent}) => isCloseToBottom(nativeEvent) ? addPokemons() : null}
         data={pokemons.results}

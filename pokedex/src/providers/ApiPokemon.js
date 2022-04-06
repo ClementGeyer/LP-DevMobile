@@ -3,7 +3,7 @@ const JSON_HEADERS = {
     'Content-Type': 'application/json',
 };
 
-export async function getPokemons(limit = 50) {
+export async function getPokemons(limit = 20) {
 
     let url = new URL("https://pokeapi.co/api/v2/pokemon?limit=" + limit)
 

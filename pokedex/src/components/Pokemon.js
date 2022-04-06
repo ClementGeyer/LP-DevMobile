@@ -10,18 +10,14 @@ export default function Pokemon(props) {
       images: {
         width: 100,
         height: 100,
-        margin: 'auto'
+        margin: 'auto',
+        alignSelf: 'center'
       },
       text: {
         textAlign: 'center'
       },
-      pokemon:{
-        border: '1px solid red',
-        width: '15%'
-      },
       frame: {
         backgroundColor: 'white',
-        border: '1px solid lightgrey',
         shadowColor: '#171717',
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.2,
@@ -29,9 +25,9 @@ export default function Pokemon(props) {
         justifyContent: 'center'
       },
       pokemon: {
-        width: '10%',
+        width: '29%',
         textAlign: 'center',
-        margin: '10px',
+        margin: '2%'
       }
     });
       

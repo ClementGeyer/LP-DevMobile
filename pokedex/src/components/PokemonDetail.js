@@ -12,17 +12,18 @@ const PokemonDetail = ({route}) => {
       },
       frame: {
         backgroundColor: 'white',
-        border: '1px solid lightgrey',
         shadowColor: '#171717',
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.2,
         shadowRadius: 3,
-        margin: '20px'
+        margin: '2%'
       },
       pokemon: {
-        width: '10%',
-        textAlign: 'center',
-        margin: '10px',
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-around',
+        marginTop: '5%',
       }
     })
   

@@ -33,11 +33,18 @@ export default function Pokemon(props) {
       
 
     useEffect(() => {
-        if(!pokemonData){
-            getPokemon(props.pokemon.item.url).then(data => {
-                setPokemonData(data)
-            })
-        }
+      if(!pokemonData){
+        if(props.myteam){
+          getPokemon(props.pokemon.item.id).then(data => {
+            setPokemonData(data)
+          })
+          console.log()
+        }else {
+          getPokemon(props.pokemon.index + 1).then(data => {
+            setPokemonData(data)
+          })
+        }   
+      }
     }, [])
   
   return (

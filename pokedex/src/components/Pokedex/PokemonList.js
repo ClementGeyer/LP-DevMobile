@@ -30,11 +30,10 @@ const PokemonList = ({navigation}) => {
   
   return (
     <>
-      {/*<Image source={require('../../assets/loader.svg')} ></Image>*/}
       <FlatList
         onScroll={({nativeEvent}) => isCloseToBottom(nativeEvent) ? addPokemons() : null}
         data={pokemons.results}
-        renderItem={pokemon => <Pokemon navigation={navigation} pokemon={pokemon}></Pokemon>}
+        renderItem={pokemon => <Pokemon navigation={navigation} pokemon={pokemon} myteam={false}></Pokemon>}
         keyExtractor={pokemon => pokemon.name}
         numColumns={3}
       />

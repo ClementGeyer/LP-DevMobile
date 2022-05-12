@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PokemonList from "../components/Pokedex/PokemonList";
 import PokemonDetail from "../components/Pokedex/PokemonDetail";
 import SearchPokemons from "../components/SearchPokemons/SearchPokemons";
+import MyTeam from "../components/MyTeam/MyTeam";
 
 import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer, TabActions } from '@react-navigation/native';
@@ -40,6 +41,19 @@ function Search(){
     )
 }
 
+
+function Team(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="MyTeam" 
+        component={MyTeam} 
+        options={{ title: 'Mon équipe' }}
+        />
+    </Stack.Navigator>
+  )
+}
+
 export default function Navigation() {
 
   return (
@@ -47,6 +61,7 @@ export default function Navigation() {
       <Tab.Navigator>
           <Tab.Screen name="Pokédex" component={Pokedex} options={{ headerShown: false }} />
           <Tab.Screen name="Recherche" component={Search} options={{ headerShown: false }} />
+          <Tab.Screen name="Mon Équipe" component={Team} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

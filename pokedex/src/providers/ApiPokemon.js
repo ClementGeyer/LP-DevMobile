@@ -15,9 +15,9 @@ export async function getPokemons(limit = 20) {
     .catch((error) => console.log('error', error));
 }
 
-export async function getPokemon(url) {
+export async function getPokemon(id) {
 
-    let new_url = new URL(url)
+    let new_url = new URL("https://pokeapi.co/api/v2/pokemon/" + id)
 
     return fetch(new_url, {
         'method': 'GET',

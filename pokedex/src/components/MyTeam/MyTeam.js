@@ -32,11 +32,6 @@ const MyTeam = ({navigation}) => {
   }, [])
 
   useEffect(() => {
-      //console.log('pokemonData', pokemonData);
-  }, [pokemonData])
-  
-
-  useEffect(() => {
     if(team && pokemonData.length === 0){
       team.map((pokemon) => {
         getPokemon(pokemon[0]).then((pkmn) => {

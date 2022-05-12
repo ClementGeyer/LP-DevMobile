@@ -1,13 +1,22 @@
 import React, {useState} from 'react';
-import { View, StyleSheet, TextInput, Button } from 'react-native';
+import reactDom from 'react-dom';
+import { View, StyleSheet, TextInput, Button, Text } from 'react-native';
 import { getPokemonByName } from '../../providers/ApiPokemon';
 
 const SearchPokemons = ({navigation}) => {
 
     const [text, setText] = useState("");
+    const [error, setError] = useState(null);
 
     function search(){
-        getPokemonByName(text).then((datas) => navigation.navigate('PokemonDetail', {pokemon: datas}))
+        getPokemonByName(text).then((datas) => {
+          if(datas){
+            setError(null);
+            navigation.navigate('PokemonDetail', {pokemon: datas})
+          } else {
+            setError(text);
+          }
+        })
     }
 
     const styles = StyleSheet.create({
@@ -18,6 +27,11 @@ const SearchPokemons = ({navigation}) => {
           padding: 10,
           backgroundColor: 'white'
         },
+        textError: {
+          textAlign: 'center',
+          color: 'red',
+          marginTop: 30
+        }
       });
   
   return (
@@ -29,6 +43,7 @@ const SearchPokemons = ({navigation}) => {
             placeholder="Rechercher..."
         />
         <Button title="Find" onPress={() => search()}></Button>
+        { error && <Text style={styles.textError}>Aucun pokémon ne s'apelle : {error}</Text> }
     </View>
   );
 }

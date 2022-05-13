@@ -3,6 +3,7 @@ import PokemonList from "../components/Pokedex/PokemonList";
 import PokemonDetail from "../components/Pokedex/PokemonDetail";
 import SearchPokemons from "../components/SearchPokemons/SearchPokemons";
 import MyTeam from "../components/MyTeam/MyTeam";
+import Settings from '../components/Settings/Settings'
 
 import { Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer, TabActions } from '@react-navigation/native';
@@ -54,6 +55,18 @@ function Team(){
   )
 }
 
+function Options(){
+  return(
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="Settings" 
+        component={Settings} 
+        options={{ title: 'Paramètres' }}
+        />
+    </Stack.Navigator>
+  )
+}
+
 export default function Navigation() {
 
   return (
@@ -62,6 +75,7 @@ export default function Navigation() {
           <Tab.Screen name="Pokédex" component={Pokedex} options={{ headerShown: false }} />
           <Tab.Screen name="Recherche" component={Search} options={{ headerShown: false }} />
           <Tab.Screen name="Mon Équipe" component={Team} options={{ headerShown: false }} />
+          <Tab.Screen name="Paramètres" component={Options} options={{ headerShown: false }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
